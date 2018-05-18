@@ -371,13 +371,16 @@ class memberModel extends Model {
         $member_info['member_passwd']   = $register_info['password'];
         $member_info['member_email']        = $register_info['email'];
 	//添加邀请人(推荐人)会员积分 by 33h ao.com v  5 
-	$member_info['inviter_id']	= $register_info['inviter_id'];
+	//$member_info['inviter_id']	= $register_info['inviter_id'];
         $insert_id  = $this->addMember($member_info);
         if($insert_id) {
 		    //添加会员积分
 			if (C('points_isuse')){
 				Model('points')->savePointsLog('regist',array('pl_memberid'=>$insert_id,'pl_membername'=>$register_info['username']),false);
 				//添加邀请人(推荐人)会员积分 by 33hao.com
+                $inviter_id = Model('member')->table('member')->getfby_member_name($register_info['inviter_name'],'member_id');
+                $member_info['inviter_id'] = $inviter_id;
+                $register_info['inviter_id'] = $inviter_id;
 				$inviter_name = Model('member')->table('member')->getfby_member_id($member_info['inviter_id'],'member_name');
 				Model('points')->savePointsLog('inviter',array('pl_memberid'=>$register_info['inviter_id'],'pl_membername'=>$inviter_name,'invited'=>$member_info['member_name']));
 			}

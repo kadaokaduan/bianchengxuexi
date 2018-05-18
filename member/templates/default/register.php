@@ -39,6 +39,12 @@
                     <input type="text" id="email" name="email" class="text" tipMsg="<?php echo $lang['login_register_input_valid_email'];?>"/>
                   </dd>
                 </dl>
+                <dl>
+                  <dt>邀请者用户名（选填）</dt>
+                  <dd>
+                    <input type="text" id="inviter_name" name="inviter_name" class="text" tipMsg="请输入邀请人用户名（选填）"/>
+                  </dd>
+                </dl>
                 <?php if(C('captcha_status_register') == '1') { ?>
                 <div class="code-div mt15">
                   <dl>

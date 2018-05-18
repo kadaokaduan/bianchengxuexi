@@ -152,8 +152,9 @@ class loginControl extends BaseLoginControl {
         $register_info['password'] = $_POST['password'];
         $register_info['password_confirm'] = $_POST['password_confirm'];
         $register_info['email'] = $_POST['email'];
+        $register_info['inviter_name'] = $_POST['inviter_name'];
 		//添加奖励积分ID BY 33HAO.COM
-		$register_info['inviter_id'] = intval(base64_decode($_COOKIE['uid']))/1;
+		//$register_info['inviter_id'] = intval(base64_decode($_COOKIE['uid']))/1;
         $member_info = $model_member->register($register_info);
         if(!isset($member_info['error'])) {
             $model_member->createSession($member_info,true);
