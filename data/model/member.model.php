@@ -370,6 +370,7 @@ class memberModel extends Model {
         $member_info['member_name']     = $register_info['username'];
         $member_info['member_passwd']   = $register_info['password'];
         $member_info['member_email']        = $register_info['email'];
+        $member_info['inviter_id'] = Model('member')->table('member')->getfby_member_name($register_info['inviter_name'],'member_id');
 	//添加邀请人(推荐人)会员积分 by 33h ao.com v  5 
 	//$member_info['inviter_id']	= $register_info['inviter_id'];
         $insert_id  = $this->addMember($member_info);
