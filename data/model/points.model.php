@@ -88,7 +88,7 @@ class pointsModel extends Model {
 				if (!$insertarr['pl_desc']){
 					$insertarr['pl_desc'] = '邀请新会员['.$insertarr['invited'].']注册';
 				}
-				$insertarr['pl_points'] = intval($GLOBALS['setting_config']['points_invite']);
+				$insertarr['pl_points'] = 100;
 				break;
 			case 'rebate':
 				if (!$insertarr['pl_desc']){
